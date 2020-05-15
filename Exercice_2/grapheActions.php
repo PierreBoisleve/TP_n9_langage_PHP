@@ -13,7 +13,7 @@ echo 'ERROR: ' . $e->getMessage();
 $db = connexpdo('pgsql:dbname=grapheactions;host=localhost;port=5433','postgres','new_password');
 
 header ("Content-type: image/png");
-$image = imagecreate(600,600);
+$image = imagecreate(500,500);
 
 $gris = imagecolorallocate($image, 125, 125, 125);
 $blanc = imagecolorallocate($image, 255, 255, 255);
@@ -43,19 +43,19 @@ foreach ($sqlA1 as $data){
 
 // Add in graph values
 for ($i=0; $i<10; $i++){
-imageline($image, $i*60, (350-$grapheAls[$i]), ($i+1)*60, (350-$grapheAls[$i+1]), $blanc);
+imageline($image, $i*50, (500-$grapheAls[$i]*7), ($i+1)*50, (500-$grapheAls[$i+1]*7), $blanc);
 }
 // Add in graph values
 for ($i=0; $i<10; $i++){
-imageline($image, $i*60, (350-$grapheFor[$i]), ($i+1)*60, (350-$grapheFor[$i+1]), $rouge);
+imageline($image, $i*50, (500-$grapheFor[$i]*7), ($i+1)*50, (500-$grapheFor[$i+1]*7), $rouge);
 }
 
 //---------------------------------------------------------
 
-imagestring($image, 4, 10, 5, "Cours des actions  Als et For en 2010", $vert);
+imagestring($image, 4, 10, 5, "Cours des actions Als et For en 2010", $vert);
 
-imagestring($image, 4, 80, 560, "Als", $blanc);
-imagestring($image, 4, 10, 560, "For" , $rouge);
+imagestring($image, 4, 80, 460, "Als", $blanc);
+imagestring($image, 4, 10, 460, "For" , $rouge);
 
 imagepng($image);
 ?>
