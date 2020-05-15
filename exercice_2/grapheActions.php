@@ -42,11 +42,11 @@ foreach ($sqlA1 as $data){
 }
 
 // Add in graph values
-for ($i=0; $i<10; $i++){
+for ($i=0; $i<$nbrActionsAls; $i++){
 imageline($image, $i*50, (500-$grapheAls[$i]*7), ($i+1)*50, (500-$grapheAls[$i+1]*7), $blanc);
 }
 // Add in graph values
-for ($i=0; $i<10; $i++){
+for ($i=0; $i<$nbrActionsFor; $i++){
 imageline($image, $i*50, (500-$grapheFor[$i]*7), ($i+1)*50, (500-$grapheFor[$i+1]*7), $rouge);
 }
 

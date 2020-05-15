@@ -53,11 +53,11 @@ $moyenneE2=$notesE2/$nbrNotesE2;
 
 
 // Add in graph values
-for ($i=0; $i<$nbrNotes; $i++){
+for ($i=0; $i<$nbrNotesE1; $i++){
     imageline($image, $i*60, (100-$grapheE1[$i]), ($i+1)*60, (100-$grapheE1[$i+1]), $blanc);
 }
 // Add in graph values
-for ($i=0; $i<$nbrNotes; $i++){
+for ($i=0; $i<$nbrNotesE2; $i++){
     imageline($image, $i*60, (100-$grapheE2[$i]), ($i+1)*60, (100-$grapheE2[$i+1]), $bleu);
 }
 
