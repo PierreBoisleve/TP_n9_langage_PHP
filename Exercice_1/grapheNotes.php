@@ -27,6 +27,8 @@ $nbrNotesE1=0;
 $notesE2=0;
 $nbrNotesE2=0;
 
+$nbrNotes=0;
+
 $grapheE1=array();
 $grapheE2=array();
 
@@ -44,17 +46,18 @@ foreach ($sqlA1 as $data){
         array_push($grapheE2, $data['note']);
         $nbrNotesE2++;
     }
+    $nbrNotes++;
 }
 $moyenneE1=$notesE1/$nbrNotesE1;
 $moyenneE2=$notesE2/$nbrNotesE2;
 
 
 // Add in graph values
-for ($i=0; $i<600; $i++){
+for ($i=0; $i<$nbrNotes; $i++){
     imageline($image, $i*60, (100-$grapheE1[$i]), ($i+1)*60, (100-$grapheE1[$i+1]), $blanc);
 }
 // Add in graph values
-for ($i=0; $i<600; $i++){
+for ($i=0; $i<$nbrNotes; $i++){
     imageline($image, $i*60, (100-$grapheE2[$i]), ($i+1)*60, (100-$grapheE2[$i+1]), $bleu);
 }
 
