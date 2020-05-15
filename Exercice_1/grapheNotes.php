@@ -15,7 +15,7 @@ $db = connexpdo('pgsql:dbname=graphenotes;host=localhost;port=5433','postgres','
 header ("Content-type: image/png");
 $image = imagecreate(600,200);
 
-$grey = imagecolorallocate($image, 125, 125, 125);
+$gris = imagecolorallocate($image, 125, 125, 125);
 $blanc = imagecolorallocate($image, 255, 255, 255);
 $orange = imagecolorallocate($image, 255, 128, 0);
 $bleu = imagecolorallocate($image, 0, 0, 255);
