@@ -27,21 +27,36 @@ $nbrNotesE1=0;
 $notesE2=0;
 $nbrNotesE2=0;
 
+$grapheE1=array();
+$grapheE2=array();
+
 $sqlQ1 = "SELECT note, etudiant FROM notes";
 $sqlA1 = $db->query($sqlQ1);
 
 foreach ($sqlA1 as $data){
     if ($data['etudiant']=="E1"){
         $notesE1 = $notesE1 + $data['note'];
+        array_push($grapheE1, $data['note']);
         $nbrNotesE1++;
     }
     if ($data['etudiant']=="E2"){
         $notesE2 = $notesE2 + $data['note'];
+        array_push($grapheE2, $data['note']);
         $nbrNotesE2++;
     }
 }
 $moyenneE1=$notesE1/$nbrNotesE1;
 $moyenneE2=$notesE2/$nbrNotesE2;
+
+
+// Add in graph values
+for ($i=0; $i<$nbrNotesE1; $i++){
+    imageline($image, $i*25, (100-$grapheE1[$i]), ($i+1)*25, (100-$grapheE1[$i+1]), $blanc);
+}
+// Add in graph values
+for ($i=0; $i<$nbrNotesE2; $i++){
+    imageline($image, $i*25, (100-$grapheE2[$i]), ($i+1)*25, (100-$grapheE2[$i+1]), $bleu);
+}
 
 //---------------------------------------------------------
 
@@ -49,6 +64,7 @@ imagestring($image, 4, 200, 5, "Notes des etudiants E1 et E2", $noir);
 
 imagestring($image, 4, 350, 150, "Moyenne des notes de E1 : ".$moyenneE1 , $noir);
 imagestring($image, 4, 350, 175, "Moyenne des notes de E2 : ".$moyenneE2 , $noir);
+
 imagestring($image, 4, 5, 125, "E1" , $blanc);
 imagestring($image, 4, 50, 125, "E2", $bleu);
 
